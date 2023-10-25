@@ -1,0 +1,42 @@
+{# templates/home.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container mx-auto font-sans">
+        <div>
+            <h2 class="font-title text-3xl my-10">Popular categories</h2>
+            <div class="flex justify-between">
+                {% for category in popularCategories %}
+                    <div class="text-center">
+                        <a href="/recipes?searchTerm={{ category.searchTerm }}">
+                            <div class="rounded-full overflow-hidden mb-3">
+                                <img class="h-32 w-32 object-cover" src={{ category.image }}>
+                            </div>
+                            <h5 class="text-xl">{{ category.name }}</h5>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div>
+            <h2 class="font-title text-3xl my-10">Today's recipes</h2>
+            <div class="grid grid-cols-3 gap-y-8">
+                {% for recipe in recipes %}
+                <div class="relative border w-64 shadow rounded-lg overflow-hidden">
+                    <img src="{{ recipe.imageUrl }}"/>
+                    <div class="p-5">
+                        <h4 class="text-lg font-bold block mb-8"><a href="/recipes/{{ recipe.id }}">{{ recipe.name }}</a></h4>
+                        <span class="absolute inset-x-5 bottom-3 flex space-x-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            <span class="text-xs text-gray-500 pt-1">{{ recipe.readyIn }} MIN</span>
+                        </span>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

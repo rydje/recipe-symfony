@@ -1,0 +1,4 @@
+api:
+    resource: '../../src/Recipe/Presentation/Controller/API'
+    prefix: /api
+    type: annotation

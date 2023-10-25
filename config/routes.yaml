@@ -1,5 +1,5 @@
 controllers:
     resource:
-        path: ../src/Controller/
-        namespace: App\Controller
+        path: ../src/Recipe/Presentation/Controller/Web
+        namespace: App\Recipe\Presentation\Controller\Web
     type: attribute
